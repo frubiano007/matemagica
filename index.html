@@ -350,6 +350,10 @@ const EXAMPLES = [
 let history = [];
 
 window.addEventListener('DOMContentLoaded', () => {
+  // Allow ?reset=1 to clear saved key
+  if (new URLSearchParams(window.location.search).get('reset') === '1') {
+    localStorage.removeItem(KEY_STORAGE);
+  }
   // Check saved key
   if (getApiKey()) {
     document.getElementById('setup-overlay').classList.add('hidden');
