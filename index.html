@@ -271,7 +271,7 @@ function clearPhoto(){
 const EXAMPLES=["Resuelve: 2x² - 5x + 3 = 0","3/4 + 2/5 = ?","¿Cuánto es el 15% de 240?","Factoriza: x² - 9","Área de un círculo con radio 7","Simplifica: (x²-4)/(x-2)","Resuelve el sistema: x+y=10, x-y=4","log₂(64) = ?","Derivada de f(x) = x³ + 2x","Volumen de una esfera con r=5"];
 
 window.addEventListener('DOMContentLoaded',()=>{
-  onst resp=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash' + ':generateContent?key=' + apiKey,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(new URLSearchParams(window.location.search).get('reset')==='1')localStorage.removeItem(KEY_STORAGE);
   if(getApiKey()){document.getElementById('setup-overlay').classList.add('hidden');document.getElementById('key-indicator').classList.remove('hidden')}
   const grid=document.getElementById('examples-grid');
   EXAMPLES.forEach(ex=>{
